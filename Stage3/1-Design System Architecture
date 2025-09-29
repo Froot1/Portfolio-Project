@@ -1,0 +1,46 @@
+# System Architecture
+
+This document outlines the high-level architecture of the application, detailing the main components, their interactions, and the technologies used.
+
+## Main Components
+
+- **Front-end:** React (TypeScript, Vite, Tailwind CSS)
+  - Handles UI, user interactions, and communicates with Supbase  via REST APIs/SDK.
+- **Back-end & Database:** Supbase 
+  - Provides authentication, database (NoSQL collections), storage, and serverless functions.
+  - Manages users, groups, activities, transactions, and permissions.
+- **External Services:**
+  - Email (for notifications, password reset, etc.)
+  - Deployment (Railway for hosting front-end)
+  - (Optional) Other APIs as needed
+
+## High-Level Architecture Diagram (Text)
+
+```
++-------------------+         REST API/SDK         +-------------------+
+|                   | <------------------------->  |                   |
+|    Front-end      |                              |     Supbase       |
+|  (React, Vite)    |                              | (Auth, DB, Func)  |
+|                   | <------------------------->  |                   |
++-------------------+         Responses            +-------------------+
+                                                        |
+                                                        | (Internal)
+                                                        v
+                                                +-------------------+
+                                                |    Database       |
+                                                | (NoSQL, Coll.)    |
+                                                +-------------------+
+                                                        |
+                                                        | (Email, Hosting, etc.)
+                                                        v
+                                                +-------------------+
+                                                | External Services |
+                                                | (Email, Railway)   |
+                                                +-------------------+
+```
+
+### Data Flow
+
+- The **Front-end** (React) interacts with **Supbase** via REST API/SDK for authentication, CRUD operations, and storage.
+- **Supbase** manages business logic, authentication, and data storage in its NoSQL database.
+- **Supbase* communicates with **External Services** (e.g., sends emails, deploys to Railway) as needed.
