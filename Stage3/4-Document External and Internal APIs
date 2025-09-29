@@ -1,0 +1,38 @@
+# API Documentation
+
+This document provides detailed API documentation for the backend services of the expense-sharing application, including external APIs used and internal API endpoints.
+## External APIs
+
+| API/Service         | Purpose                                      | Reason for Selection                        |
+|---------------------|----------------------------------------------|---------------------------------------------|
+| Supabase Auth       | User authentication (sign up, login, JWT)    | Secure, scalable, integrated with database  |
+| Supabase Storage    | File uploads (profile photos, attachments)   | Easy integration, managed storage           |
+| Email Provider (e.g., SendGrid) | Send email notifications (invites, password reset) | Reliable transactional email delivery       |
+
+**Note:**  
+- Supabase is chosen for its managed PostgreSQL, built-in auth, and storage, reducing backend complexity.
+- Railway is used for deployment but is not an API consumed at runtime.
+
+---
+
+## Internal API Endpoints
+
+| URL Path                        | Method | Input Format         | Output Format        | Description                                 |
+|----------------------------------|--------|----------------------|----------------------|---------------------------------------------|
+| /api/auth/signup                 | POST   | JSON (email, password, name) | JSON (user, token)   | Register a new user                         |
+| /api/auth/login                  | POST   | JSON (email, password)       | JSON (user, token)   | Authenticate user, return JWT               |
+| /api/users/me                    | GET    | JWT (header)                | JSON (user)          | Get current user profile                    |
+| /api/users/me                    | PUT    | JSON (profile fields)        | JSON (user)          | Update current user profile                 |
+| /api/friends                     | GET    | JWT (header)                | JSON (friends[])     | List user’s friends                         |
+| /api/friends                     | POST   | JSON (friend_id)             | JSON (friend)        | Add a friend                                |
+| /api/groups                      | GET    | JWT (header)                | JSON (groups[])      | List user’s groups                          |
+| /api/groups                      | POST   | JSON (group_name, members[]) | JSON (group)         | Create a new group                          |
+| /api/groups/:groupId             | GET    | JWT (header)                | JSON (group)         | Get group details                           |
+| /api/groups/:groupId/activities  | GET    | JWT (header)                | JSON (activities[])  | List group activities                       |
+| /api/groups/:groupId/activities  | POST   | JSON (desc, amount, participants[]) | JSON (activity) | Add new group activity/expense              |
+| /api/activities/:activityId      | GET    | JWT (header)                | JSON (activity)      | Get activity details                        |
+| /api/activities/:activityId      | PUT    | JSON (fields)                | JSON (activity)      | Update activity                             |
+| /api/transactions                | GET    | JWT (header)                | JSON (transactions[]) | List user’s transactions                    |
+| /api/settlements                 | POST   | JSON (group_id, payer_id, receiver_id, amount) | JSON (settlement) | Settle up debts (payer pays receiver)        |
+
+**All endpoints return errors in JSON format with appropriate HTTP status codes.**
