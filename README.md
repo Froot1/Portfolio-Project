@@ -9,6 +9,7 @@
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 ![Railway](https://img.shields.io/badge/Railway-6F2EEA?style=for-the-badge&logo=railway&logoColor=white)
+
 The Portfolio Project is the graduation project of the Holberton Bootcamp It highlights the key skills we learned during the program In this project , we showcase our ability to build a fully integrated backend and frontend using the latest technologies such as Node.js React TailwindCSS and more
 
 Our project is named Qattah
