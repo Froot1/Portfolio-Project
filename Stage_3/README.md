@@ -1,8 +1,6 @@
-![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
-![PlantUML](https://img.shields.io/badge/PlantUML-555555?style=for-the-badge&logo=plantuml&logoColor=white)
-
 # Stage 3: Technical Design & Architecture
-
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+![Lucidchart](https://img.shields.io/badge/UML-FF9E0F?style=for-the-badge&logo=lucidchart&logoColor=white)
 
 This stage focuses on the technical design and architecture planning for the portfolio project It includes comprehensive documentation of system design , user flows , database architecture , and development strategies
 
