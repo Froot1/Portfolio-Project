@@ -1,0 +1,44 @@
+# High-Level Sequence Diagrams
+
+This document provides high-level sequence diagrams illustrating key interactions within the application, focusing on user authentication, group expense management, and debt settlement processes.
+
+## Sequence Diagram: User Logs In
+
+```
+User -> Front-end: Enter email & password
+Front-end -> Back-end API: POST /login (credentials)
+Back-end API -> Supabase DB: SELECT user WHERE email = ? AND password_hash = ?
+Supabase DB --> Back-end API: User record (if valid)
+Back-end API --> Front-end: Auth token / error
+Front-end --> User: Show login success or error
+```
+
+---
+
+## Sequence Diagram: User Adds a New Group Expense
+
+```
+User -> Front-end: Enter expense details (amount, description, group, participants)
+Front-end -> Back-end API: POST /groups/:groupId/activities (expense data)
+Back-end API -> Supabase DB: INSERT INTO activities (group_id, description, amount, created_by, ...)
+Supabase DB --> Back-end API: New activity record
+Back-end API -> Supabase DB: INSERT INTO activity_participants (activity_id, user_id, share) for each participant
+Supabase DB --> Back-end API: Participant records created
+Back-end API --> Front-end: Success response (activity + participants)
+Front-end --> User: Show updated group activity list
+```
+
+---
+
+## Sequence Diagram: User Settles a Debt
+
+```
+User -> Front-end: Click "Settle Up" (select group, payer, receiver, amount)
+Front-end -> Back-end API: POST /settlements (group_id, payer_id, receiver_id, amount)
+Back-end API -> Supabase DB: INSERT INTO settlements (group_id, payer_id, receiver_id, amount, settled_at)
+Supabase DB --> Back-end API: New settlement record
+Back-end API -> Supabase DB: UPDATE transactions SET is_settled = true WHERE group_id = ? AND payer_id = ? AND receiver_id = ?
+Supabase DB --> Back-end API: Transactions updated
+Back-end API --> Front-end: Success response (settlement + updated transactions)
+Front-end --> User: Show updated balances and settlement status
+```
