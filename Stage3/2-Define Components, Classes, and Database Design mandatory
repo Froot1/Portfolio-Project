@@ -1,0 +1,151 @@
+# Components, Classes, and Database Design
+
+## Backend Classes
+
+### User
+- **Attributes:** id, username, name, email, password_hash, created_at
+- **Methods:** register(), login(), updateProfile(), getFriends(), getGroups()
+
+### Group
+- **Attributes:** id, group_name, creator_id, created_at
+- **Methods:** createGroup(), addMember(), removeMember(), getActivities(), getMembers()
+
+### Friend
+- **Attributes:** id, user_id, friend_id, created_at
+- **Methods:** addFriend(), removeFriend(), listFriends()
+
+### Activity (Expense)
+- **Attributes:** id, group_id, description, amount, created_by, created_at, is_settled
+- **Methods:** addActivity(), updateActivity(), deleteActivity(), listActivities(), splitExpense()
+
+### Transaction
+- **Attributes:** id, activity_id, payer_id, receiver_id, amount, created_at, is_settled
+- **Methods:** createTransaction(), settleTransaction(), listTransactions()
+
+### Settlement
+- **Attributes:** id, group_id, payer_id, receiver_id, amount, settled_at
+- **Methods:** settleUp(), getSettlementStatus()
+
+## Supabase (PostgreSQL) Database Schema
+
+### users
+- id (PK, UUID, required)
+- username (string, required, unique)
+- name (string, required)
+- email (string, required, unique)
+- password_hash (string, required)
+- created_at (timestamp, required)
+
+### groups
+- id (PK, UUID, required)
+- group_name (string, required)
+- creator_id (FK -> users.id, required)
+- created_at (timestamp, required)
+
+### group_members
+- id (PK, UUID, required)
+- group_id (FK -> groups.id, required)
+- user_id (FK -> users.id, required)
+- joined_at (timestamp, required)
+
+### friends
+- id (PK, UUID, required)
+- user_id (FK -> users.id, required)
+- friend_id (FK -> users.id, required)
+- created_at (timestamp, required)
+
+### activities
+- id (PK, UUID, required)
+- group_id (FK -> groups.id, required)
+- description (string, required)
+- amount (numeric, required)
+- created_by (FK -> users.id, required)
+- created_at (timestamp, required)
+- is_settled (boolean, default false, required)
+
+### activity_participants
+- id (PK, UUID, required)
+- activity_id (FK -> activities.id, required)
+- user_id (FK -> users.id, required)
+- share (numeric, required)
+
+### transactions
+- id (PK, UUID, required)
+- activity_id (FK -> activities.id, required)
+- payer_id (FK -> users.id, required)
+- receiver_id (FK -> users.id, required)
+- amount (numeric, required)
+- created_at (timestamp, required)
+- is_settled (boolean, default false, required)
+
+### settlements
+- id (PK, UUID, required)
+- group_id (FK -> groups.id, required)
+- payer_id (FK -> users.id, required)      # The user who pays (settles the debt)
+- receiver_id (FK -> users.id, required)   # The user who receives the payment
+- amount (numeric, required)
+- settled_at (timestamp, optional)
+
+## ER Diagram (Text Representation)
+
+```
+users
+  | 1
+  |-------------------< group_members >-------------------|
+  |                                                      |
+groups                                               friends
+  | 1                                                    | 1
+  |-------------------< activities >---------------------|
+  |                                                      |
+activity_participants                                transactions
+  |                                                      |
+settlements                                              |
+```
+
+**Legend:**  
+- `A >---< B` means many-to-many via join table.
+- `A >--- B` means one-to-many.
+- Arrows show foreign key relationships.
+
+**Key Relationships:**
+- users/groups: many-to-many via group_members
+- users/friends: many-to-many (self-referencing)
+- groups/activities: one-to-many
+- activities/activity_participants: one-to-many
+- activities/transactions: one-to-many
+- groups/settlements: one-to-many
+
+## Main Front-end UI Components and Interactions
+
+- **Auth Components**
+  - SignupForm, SigninForm: User registration and login.
+- **Navigation/Layout**
+  - Topbar, Bottombar, LeftSidebar: Navigation and layout structure.
+- **Home/Dashboard**
+  - Home: Shows user dashboard, recent activities, and group summary.
+- **Group Management**
+  - CreateGroup: Form to create a new group.
+  - GroupDetails: View group info, members, and activities.
+  - AddMemberForm: Add users to a group.
+- **Activity/Expense Management**
+  - AddExpense: Add a new expense/activity to a group.
+  - GroupActivity, ActivityCard: List and display group activities.
+  - Settlement: Settle up debts within a group.
+- **Friends Management**
+  - FriendForm: Add a new friend.
+  - ShowFriendList, AllFriends: View and manage friends.
+- **Profile Management**
+  - Profile, EditProfile: View and edit user profile.
+  - Profilephoto: Display and update profile picture.
+- **Shared/UI Components**
+  - UserCard, UserList: Display user info in lists.
+  - PostForm, PostCard: (If social features enabled) create/view posts.
+  - Loader, CircleLoader: Loading indicators.
+  - Toast, Toaster: Notifications and alerts.
+
+**Component Interactions:**
+- Auth components manage user session and route to Home on success.
+- Home/dashboard links to groups, activities, and friends.
+- GroupDetails displays group members and activities, allows adding expenses and settling debts.
+- Activity components interact with group and user data, update balances and transactions.
+- Profile and friends components allow user management and social connections.
