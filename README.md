@@ -163,8 +163,7 @@ Portfolio-Project/
 │   ├── package.json
 │   └── server.js
 ├── docs/
-├── README.md
-└── LICENSE
+└── README.md
 ```
 ## Authors
 
