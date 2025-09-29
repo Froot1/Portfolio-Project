@@ -1,0 +1,48 @@
+# SCM and QA Strategies
+
+## Todo Checklist
+
+- [x] Create todo checklist for SCM and QA strategies
+- [x] Define SCM strategy (version control, branching, code reviews)
+- [ ] Define QA strategy (testing tools, types of tests, deployment pipeline)
+- [ ] Compile deliverable: SCM and QA strategy documentation
+
+---
+
+## SCM Strategy
+
+- **Version Control:** Git (hosted on GitHub or similar)
+- **Branching Model:**
+  - `main`: Stable, production-ready code
+  - `develop`: Integration branch for features before release
+  - `feature/*`: One branch per feature or bugfix (e.g., `feature/add-friends`)
+- **Workflow:**
+  - Developers create feature branches from `develop`
+  - Regular commits with clear messages
+  - Pull requests (PRs) required to merge into `develop` or `main`
+  - Code reviews required before merging PRs
+  - All PRs must pass automated tests before merge
+- **Release Process:**
+  - Merge `develop` into `main` for production releases
+  - Tag releases with semantic versioning (e.g., v1.0.0)
+
+---
+
+## QA Strategy
+
+- **Testing Types:**
+  - Unit tests for backend logic (e.g., API endpoints, business logic)
+  - Integration tests for end-to-end flows (e.g., user registration, group expense)
+  - Manual testing for critical user flows and UI/UX
+- **Testing Tools:**
+  - **Jest:** Automated unit and integration tests for backend (Node.js/TypeScript)
+  - **Supertest:** API endpoint testing
+  - **Postman:** Manual and automated API testing
+  - **React Testing Library:** Unit tests for React components
+- **Continuous Integration (CI):**
+  - Automated test suite runs on every PR and push to `develop`/`main`
+  - Linting and code style checks (e.g., ESLint, Prettier)
+- **Deployment Pipeline:**
+  - **Staging:** Auto-deploy from `develop` branch to Railway staging environment for QA
+  - **Production:** Auto-deploy from `main` branch to Railway production environment after passing all tests
+  - Rollback and monitoring enabled for production deployments
