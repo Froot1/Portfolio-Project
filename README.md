@@ -1,4 +1,5 @@
 # Portfolio-Project
+![IMG_1528](https://github.com/user-attachments/assets/f683dfa3-4bdd-49a8-bbb4-2a4d0de61b5d)
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
