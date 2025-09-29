@@ -147,19 +147,6 @@ http://localhost:5000/api
 
 For detailed API documentation, visit `/api/docs` when running the server
 
-### Code Style
-- Follow the existing code style
-- Use ESLint and Prettier for code formatting
-- Write meaningful commit messages
-- Add tests for new features
-
-## Authors
-
-- **Khaled Almimoni**
-- **Fahad Alonazi**
-- **Ibrahim Alfaleh**
----
-
 ### Project Structure
 ```
 Portfolio-Project/
@@ -179,3 +166,9 @@ Portfolio-Project/
 ├── README.md
 └── LICENSE
 ```
+## Authors
+
+- **Khaled Almimoni**
+- **Fahad Alonazi**
+- **Ibrahim Alfaleh**
+---
