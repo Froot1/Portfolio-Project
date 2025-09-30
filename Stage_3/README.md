@@ -4,7 +4,7 @@
 
 This stage focuses on the technical design and architecture planning for the portfolio project It includes comprehensive documentation of system design , user flows , database architecture , and development strategies
 
-## Mookup
+## Mokup
 <img width="1279" height="712" alt="Screenshot 2025-09-30 at 5 53 26 PM" src="https://github.com/user-attachments/assets/2d47115f-541c-4960-99ca-d3de0f877cb1" />
 
 
