@@ -4,6 +4,10 @@
 
 This stage focuses on the technical design and architecture planning for the portfolio project It includes comprehensive documentation of system design , user flows , database architecture , and development strategies
 
+## Mookup
+
+[View Mockup on Figma](https://www.figma.com/make/dCMntxNb0q551s6BCgq7ZQ/Login-Screen?t=tScmAu0u8B2G8JEE-0&fullscreen=1)
+
 ## Directory Structure
 
 ### Planning Documents
