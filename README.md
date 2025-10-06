@@ -22,19 +22,11 @@ Our project is named Qattah
 ### Frontend
 - **React** - JavaScript library for building user interfaces
 - **TailwindCSS** - Utility-first CSS framework
-- **JavaScript/ES6+** - Modern JavaScript features
 
 ### Backend
 - **Node.js** - JavaScript runtime environment
-- **Express.js** - Web application framework
-- **MongoDB** - NoSQL database (if applicable)
-
-### Development Tools
-- **Git** - Version control
-- **npm/yarn** - Package management
-- **Webpack** - Module bundler
-- **ESLint** - Code linting
-- **Prettier** - Code formatting
+- **supabase** - Database and authentication
+- **Railway** -
 
 ## Installation
 
@@ -53,13 +45,13 @@ cd Portfolio-Project
 
 2. Install dependencies for the frontend
 ```bash
-cd frontend
+cd xx
 npm install
 ```
 
 3. Install dependencies for the backend
 ```bash
-cd ../backend
+cd xx
 npm install
 ```
 
@@ -74,13 +66,13 @@ cp .env.example .env
 
 Frontend:
 ```bash
-cd frontend
+cd xx
 npm start
 ```
 
 Backend:
 ```bash
-cd backend
+cd xx
 npm run dev
 ```
 
@@ -90,62 +82,6 @@ npm run dev
 2. Explore the different sections of the portfolio
 3. Test the interactive features and functionality
 4. Use the contact form to send messages
-
-### Environment Variables
-
-Create a `.env` file in the backend directory with the following variables:
-
-```env
-PORT=5000
-DATABASE_URL=your_database_connection_string
-JWT_SECRET=your_jwt_secret_key
-EMAIL_SERVICE=your_email_service
-EMAIL_USER=your_email_username
-EMAIL_PASS=your_email_password
-```
-
-## Development Setup
-
-### Frontend Development
-```bash
-cd frontend
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run test         # Run tests
-npm run lint         # Run linter
-```
-
-### Backend Development
-```bash
-cd backend
-npm run dev          # Start development server with nodemon
-npm run start        # Start production server
-npm run test         # Run tests
-npm run lint         # Run linter
-```
-
-## API Documentation
-
-### Base URL
-```
-http://localhost:5000/api
-```
-
-### Endpoints
-
-#### Authentication
-- `POST /auth/register` - Register a new user
-- `POST /auth/login` - Login user
-- `POST /auth/logout` - Logout user
-
-#### Contact
-- `POST /contact` - Send contact message
-
-#### Portfolio
-- `GET /portfolio` - Get portfolio items
-- `POST /portfolio` - Create new portfolio item (admin)
-
-For detailed API documentation, visit `/api/docs` when running the server
 
 ### Project Structure
 ```
