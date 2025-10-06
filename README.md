@@ -55,13 +55,6 @@ cd xx
 npm install
 ```
 
-4. Set up environment variables
-```bash
-# Create .env file in the backend directory
-cp .env.example .env
-# Edit the .env file with your configuration
-```
-
 5. Start the development servers
 
 Frontend:
