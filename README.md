@@ -22,12 +22,12 @@ Our project is named Qattah
 ### Frontend
 - **React** - JavaScript library for building user interfaces
 - **TailwindCSS** - Utility-first CSS framework
-
+- **vite** -
 ### Backend
 - **Node.js** - JavaScript runtime environment
 - **supabase** - Database and authentication
 - **Railway** -
-
+- **Typescript** -
 ## Installation
 
 ### Prerequisites
