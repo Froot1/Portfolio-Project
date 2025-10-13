@@ -100,6 +100,3 @@ Portfolio-Project/
 - **Fahad Alonazi**
 - **Ibrahim Alfaleh**
 ---
-
-## Documentation
-- [Stage 4 — MVP Development & Execution](docs/README_STAGE4.md)
