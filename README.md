@@ -76,24 +76,6 @@ npm run dev
 3. Test the interactive features and functionality
 4. Use the contact form to send messages
 
-### Project Structure
-```
-Portfolio-Project/
-├── frontend/
-│   ├── src/
-│   ├── public/
-│   ├── package.json
-│   └── README.md
-├── backend/
-│   ├── routes/
-│   ├── models/
-│   ├── middleware/
-│   ├── config/
-│   ├── package.json
-│   └── server.js
-├── docs/
-└── README.md
-```
 ## Authors
 
 - **Khaled Almimoni**
