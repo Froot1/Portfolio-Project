@@ -1,14 +1,5 @@
 # SCM and QA Strategies
 
-## Todo Checklist
-
-- [x] Create todo checklist for SCM and QA strategies
-- [x] Define SCM strategy (version control, branching, code reviews)
-- [ ] Define QA strategy (testing tools, types of tests, deployment pipeline)
-- [ ] Compile deliverable: SCM and QA strategy documentation
-
----
-
 ## SCM Strategy
 
 - **Version Control:** Git (hosted on GitHub or similar)
