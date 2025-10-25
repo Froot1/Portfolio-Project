@@ -39,7 +39,7 @@ Our project is named Qattah
 
 1. Clone the repository
 ```bash
-git clone https://github.com/KhaledCS1/Portfolio-Project.git
+git clone https://github.com/Froot1/Portfolio-Project.git
 cd Portfolio-Project
 ```
 
@@ -71,10 +71,10 @@ npm run dev
 
 ## Usage
 
-1. Open your browser and navigate to `http://localhost:3000`
+1. Open your browser and navigate to `http://localhost:5173/`
 2. Explore the different sections of the portfolio
 3. Test the interactive features and functionality
-4. Use the contact form to send messages
+4. Use the contact form to send communicate with users
 
 ## Authors
 
