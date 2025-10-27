@@ -14,71 +14,28 @@ The Portfolio Project is the graduation project of the Holberton Bootcamp It hig
 
 Our project is named Qattah
 
+## To View and test the Qattah Project, click the link:
+[Qattah on railway](https://qattahapp-production.up.railway.app)
 
+
+## Mockup
 [View Mockup on Figma](https://www.figma.com/make/dCMntxNb0q551s6BCgq7ZQ/Login-Screen?t=tScmAu0u8B2G8JEE-0&fullscreen=1)
+
 
 ## Technologies Used
 
 ### Frontend
 - **React** - JavaScript library for building user interfaces
 - **TailwindCSS** - Utility-first CSS framework
-- **vite** -
+- **vite** - Lightning-fast build tool
 ### Backend
 - **Node.js** - JavaScript runtime environment
-- **supabase** - Database and authentication
-- **Railway** -
-- **Typescript** -
-## Installation
+- **supabase** - Database and authentication & APIs
+- **Railway** - Cloud platform for deploying
 
-### Prerequisites
-- Node.js (version 14 or higher)
-- npm or yarn package manager
-- Git
-
-### Steps
-
-1. Clone the repository
-```bash
-git clone https://github.com/Froot1/Portfolio-Project.git
-cd Portfolio-Project
-```
-
-2. Install dependencies for the frontend
-```bash
-cd xx
-npm install
-```
-
-3. Install dependencies for the backend
-```bash
-cd xx
-npm install
-```
-
-5. Start the development servers
-
-Frontend:
-```bash
-cd xx
-npm start
-```
-
-Backend:
-```bash
-cd xx
-npm run dev
-```
-
-## Usage
-
-1. Open your browser and navigate to `http://localhost:5173/`
-2. Explore the different sections of the portfolio
-3. Test the interactive features and functionality
-4. Use the contact form to send communicate with users
 
 ## Authors
 
 - **Khaled Almimoni**
 - **Fahad Alonazi**
 - **Ibrahim Alfaleh**
----
