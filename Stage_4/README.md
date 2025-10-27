@@ -1,11 +1,7 @@
 # 🧩 Qattah — Stage 4: MVP Development & Execution (Simple Version)
 
-**Date:** 2025-10-25  
-**Team**
-- 🧭 **ibrahem** — Project Manager (PM)
-- 💻 **khaled** — Frontend & Documentation Lead
-- 🗄️ **fahad** — Backend/Database Lead & QA Tester
-
+### to view and test the Qattah project on railway:
+[Qattah on railway](https://qattahapp-production.up.railway.app)
 ---
 
 ## ⚙️ Project Stack
@@ -95,3 +91,9 @@ Qattah_Stage4_Final/
 - Always test before merge  
 - Communicate blockers early  
 - Focus on MVP first, polish later
+
+**Date:** 2025-10-25  
+**Team**
+- 🧭 **ibrahem** — Project Manager (PM)
+- 💻 **khaled** — Frontend & Documentation Lead
+- 🗄️ **fahad** — Backend/Database Lead & QA Tester
