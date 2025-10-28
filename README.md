@@ -19,7 +19,6 @@ Our project is named Qattah
 ## To View and test the Qattah Project, click the link:
 [Qattah on railway](https://qattahapp-production.up.railway.app)
 
----
 
 ## Mockup
 [View Mockup on Figma](https://www.figma.com/make/dCMntxNb0q551s6BCgq7ZQ/Login-Screen?t=tScmAu0u8B2G8JEE-0&fullscreen=1)
@@ -45,7 +44,8 @@ Our project is named Qattah
 | Postman | API Testing |
 | Railway | Hosting |
 | GitHub  | Task Management |
----
+
+
 ## Authors
 | Name  |       Role         |        Focus          |
 |------|--------------------|-----------------------|
