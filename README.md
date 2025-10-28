@@ -14,14 +14,17 @@ The Portfolio Project is the graduation project of the Holberton Bootcamp It hig
 
 Our project is named Qattah
 
+---
+
 ## To View and test the Qattah Project, click the link:
 [Qattah on railway](https://qattahapp-production.up.railway.app)
 
+---
 
 ## Mockup
 [View Mockup on Figma](https://www.figma.com/make/dCMntxNb0q551s6BCgq7ZQ/Login-Screen?t=tScmAu0u8B2G8JEE-0&fullscreen=1)
 
-
+---
 ## Technologies Used
 
 ### Frontend
@@ -42,14 +45,10 @@ Our project is named Qattah
 | Postman | API Testing |
 | Railway | Hosting |
 | GitHub  | Task Management |
-
 ---
-
 ## Authors
 | Name  |       Role         |        Focus          |
 |------|--------------------|-----------------------|
 | ibrahem | Project Maneger | Planning, standups    |
 | khaled | Frontend Lead    | UI, Docs              |
 | fahad | Backend & QA      | Supabase, Testing     |
-
----
