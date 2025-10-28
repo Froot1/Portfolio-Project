@@ -33,9 +33,23 @@ Our project is named Qattah
 - **supabase** - Database and authentication & APIs
 - **Railway** - Cloud platform for deploying
 
+---
+## Tools
+| Tool | Purpose |
+|------|----------|
+| Supabase | Database & Auth |
+| VS Code | Development |
+| Postman | API Testing |
+| Railway | Hosting |
+| GitHub  | Task Management |
+
+---
 
 ## Authors
+| Name  |       Role         |        Focus          |
+|------|--------------------|-----------------------|
+| ibrahem | Project Maneger | Planning, standups    |
+| khaled | Frontend Lead    | UI, Docs              |
+| fahad | Backend & QA      | Supabase, Testing     |
 
-- **Khaled Almimoni**
-- **Fahad Alonazi**
-- **Ibrahim Alfaleh**
+---
