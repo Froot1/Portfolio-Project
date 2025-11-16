@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Qattah — Split expenses the easy way</title>
+  <meta name="description" content="Qattah is a simple, fast, and bilingual (AR/EN) app to split group expenses, track balances, and settle up—powered by Supabase and deployed on Railway." />
+  <meta property="og:title" content="Qattah — Split expenses the easy way">
+  <meta property="og:description" content="Track shared expenses, invite friends, and settle up in seconds.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/og-card.svg">
+  <meta name="theme-color" content="#111827" />
+
+  <link rel="icon" href="assets/favicon.ico" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    /* Use system font stack to avoid external dependencies */
+    :root{
+      --bg: #0b1220;
+      --bg-soft:#0f172a;
+      --card:#111827;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --brand:#22c55e;
+      --brand-2:#10b981;
+      --ring: rgba(34,197,94,.35);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 14px;
+      --maxw: 1100px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#ffffff;
+        --bg-soft:#f8fafc;
+        --card:#ffffff;
+        --text:#111827;
+        --muted:#6b7280;
+        --ring: rgba(16,185,129,.25);
+        --shadow: 0 10px 30px rgba(2,6,23,.07);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(34,197,94,.08), transparent 60%), var(--bg);
+      color: var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--maxw); margin-inline:auto; padding: 20px}
+    header.nav{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(10px);
+      background: color-mix(in hsl, var(--bg) 70%, transparent);
+      border-bottom: 1px solid color-mix(in hsl, var(--text) 15%, transparent);
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 20px;}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.3px}
+    .brand img{width:28px; height:28px}
+    .actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:10px 16px; border-radius:10px; border:1px solid transparent; font-weight:600;
+      background: var(--card); color: var(--text);
+      box-shadow: var(--shadow);
+      transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.primary{
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color:#051b11;
+      box-shadow: 0 10px 30px var(--ring);
+    }
+    .btn.ghost{background: transparent; border-color: color-mix(in hsl, var(--text) 20%, transparent)}
+    .lang-toggle{cursor:pointer}
+    main{padding:30px 20px}
+    .hero{
+      display:grid; grid-template-columns: 1.1fr .9fr; gap:28px; align-items:center;
+    }
+    .card{
+      background:linear-gradient(180deg, color-mix(in hsl, var(--card) 92%, transparent), var(--card));
+      border: 1px solid color-mix(in hsl, var(--text) 12%, transparent);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    h1{font-size: clamp(32px, 3.6vw, 46px); line-height:1.15; margin:0 0 10px}
+    .lead{font-size: clamp(16px, 1.6vw, 20px); color: var(--muted); margin-bottom:18px}
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px}
+    .badge{font-size:12px; padding:6px 10px; border-radius:999px; background: color-mix(in hsl, var(--brand) 20%, transparent); color:#096403; border:1px solid var(--brand);}
+    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px}
+    .feat{padding:18px; border-radius:12px; border:1px dashed color-mix(in hsl, var(--text) 18%, transparent); background: color-mix(in hsl, var(--bg-soft) 80%, transparent)}
+    .feat h3{margin:0 0 6px; font-size:18px}
+    .section{margin-top: 54px}
+    .metrics{display:grid; grid-template-columns: repeat(4, 1fr); gap:16px}
+    .metric{padding:16px; border:1px solid color-mix(in hsl, var(--text) 10%, transparent); border-radius:12px; text-align:center}
+    .metric .n{font-weight:800; font-size:28px}
+    .screens{display:grid; grid-template-columns: 1fr 1fr; gap:16px}
+    .screens img, .screens svg{width:100%; height:auto; border-radius:14px; border:1px solid color-mix(in hsl, var(--text) 12%, transparent); background: var(--bg-soft)}
+    .team{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px}
+    .member{padding:16px; border-radius:12px; border:1px solid color-mix(in hsl, var(--text) 10%, transparent)}
+    .member h4{margin:6px 0 0}
+    footer{margin-top:50px; padding:26px 0; color: var(--muted); border-top:1px solid color-mix(in hsl, var(--text) 10%, transparent)}
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{grid-template-columns: 1fr}
+      .grid-3{grid-template-columns: 1fr}
+      .metrics{grid-template-columns: repeat(2, 1fr)}
+      .team{grid-template-columns: 1fr}
+      .screens{grid-template-columns: 1fr}
+    }
+    /* RTL support */
+    [dir="rtl"] body{direction: rtl}
+    [dir="rtl"] .nav-inner{flex-direction: row-reverse}
+    [dir="rtl"] .hero{direction: rtl}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <img src="assets/favicon.ico" alt="Qattah logo" />
+        <span>Qattah</span>
+      </div>
+      <nav class="actions">
+        <a class="btn ghost" href="#features" data-i18n="nav_features">Features</a>
+        <a class="btn ghost" href="#how" data-i18n="nav_how">How it works</a>
+        <a class="btn ghost" href="#team" data-i18n="nav_team">Team</a>
+        <button class="btn lang-toggle" id="langToggle" aria-label="Toggle language">AR / EN</button>
+        <a class="btn primary" href="https://qattahapp-production.up.railway.app/sign-in" target="_blank" rel="noopener" data-i18n="nav_try">Try Live App</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <article class="card">
+        <div class="badges">
+          <span class="badge" data-i18n="badge_bilingual">Bilingual (AR/EN)</span>
+          <span class="badge">Supabase</span>
+          <span class="badge">Railway</span>
+        </div>
+        <h1 data-i18n="hero_title">Split expenses with friends — fast, clear, and fair.</h1>
+        <p class="lead" data-i18n="hero_lead">Qattah helps groups track shared expenses, see who owes what, and settle up in seconds.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://qattahapp-production.up.railway.app/sign-in" target="_blank" rel="noopener" data-i18n="cta_primary">Open Qattah</a>
+          <a class="btn" href="#demo" data-i18n="cta_secondary">See the demo</a>
+        </div>
+      </article>
+      <figure class="card" style="min-height:220px; display:flex; align-items:center; justify-content:center;">
+        <video src="assets/Untitled design.mp4" controls style="max-width:100%; border-radius:14px; background:var(--bg-soft)">
+  Your browser does not support the video tag.
+    </section>
+
+    <section id="features" class="section">
+      <h2 data-i18n="features_title">Why Qattah?</h2>
+      <div class="grid-3">
+        <div class="feat">
+          <h3 data-i18n="feat1_title">Create groups & add expenses</h3>
+          <p data-i18n="feat1_desc">Invite friends, add shared costs, attach receipts, and track balances.</p>
+        </div>
+        <div class="feat">
+          <h3 data-i18n="feat2_title">Auto settlement</h3>
+          <p data-i18n="feat2_desc">Qattah calculates who should pay whom, minimizing the number of transactions.</p>
+        </div>
+        <div class="feat">
+          <h3 data-i18n="feat3_title">Fast & secure</h3>
+          <p data-i18n="feat3_desc">Supabase backend with secure storage and deployment on Railway for high availability.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="metrics" class="section">
+      <h2 data-i18n="metrics_title">MVP Metrics</h2>
+      <div class="metrics">
+        <div class="metric"><div class="n">220 ms</div><div data-i18n="m1">Avg API response</div></div>
+        <div class="metric"><div class="n">99.3%</div><div data-i18n="m2">Uptime (Railway)</div></div>
+        <div class="metric"><div class="n">94%</div><div data-i18n="m3">Feature completion</div></div>
+        <div class="metric"><div class="n">4.7/5</div><div data-i18n="m4">User satisfaction</div></div>
+      </div>
+    </section>
+
+    <section id="how" class="section">
+      <h2 data-i18n="how_title">How it works</h2>
+      <ol class="card" style="margin:0; padding-left:26px">
+        <li data-i18n="how_1">Create a group for your trip or event.</li>
+        <li data-i18n="how_2">Add expenses and assign who participated.</li>
+        <li data-i18n="how_3">View balances and settle up in one tap.</li>
+      </ol>
+    </section>
+
+    <section id="demo" class="section">
+      <h2 data-i18n="demo_title">Screens & Demo</h2>
+      <div class="screens">
+        <img src="assets/screen-1.png" alt="Dashboard screen" />
+        <img src="assets/screen-2.png" alt="Group expenses screen" />
+        <img src="assets/screen-3.png" alt="Group expenses screen" />
+        <img src="assets/screen-4.png" alt="Group expenses screen" />
+        <img src="assets/screen-5.png" alt="Group expenses screen" />
+        <img src="assets/screen-6.png" alt="Group expenses screen" />
+      </div>
+    </section>
+
+    <section id="team" class="section">
+      <h2 data-i18n="team_title">Team</h2>
+      <div class="team">
+        <div class="member">
+          <strong data-i18n="t1_name">Ibrahim</strong>
+          <h4 data-i18n="t1_role">Project Manager</h4>
+        </div>
+        <div class="member">
+          <strong data-i18n="t2_name">Khaled</strong>
+          <h4 data-i18n="t2_role">Frontend & Documentation Lead</h4>
+        </div>
+        <div class="member">
+          <strong data-i18n="t3_name">Fahad</strong>
+          <h4 data-i18n="t3_role">Backend/DB Lead & Tester</h4>
+        </div>
+      </div>
+    </section>
+
+    <section class="section card">
+      <h2 data-i18n="faq_title">FAQ</h2>
+      <details>
+        <summary data-i18n="faq_1_q">Is Qattah free?</summary>
+        <p data-i18n="faq_1_a">Yes, the MVP is free for testing during the project period.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq_2_q">Does it support Arabic?</summary>
+        <p data-i18n="faq_2_a">Yes. Toggle AR/EN using the “AR / EN” button in the header.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq_3_q">Where is data stored?</summary>
+        <p data-i18n="faq_3_a">Data is stored securely in Supabase with public file URLs for avatars.</p>
+      </details>
+    </section>
+
+    <footer class="container">
+      <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap">
+        <small>© <span id="year"></span> Qattah</small>
+        <small><a href="https://qattahapp-production.up.railway.app/sign-in" target="_blank" rel="noopener">App</a> · <a href="#features">Features</a> · <a href="#team">Team</a></small>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
