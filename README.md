@@ -49,6 +49,6 @@ Our project is named Qattah
 ## Authors
 | Name  |       Role         |        Focus          |
 |------|--------------------|-----------------------|
-| ibrahem | Project Maneger | Planning, standups    |
+| Fahad | Backend & QA      | Backend, Testing     |
 | khaled | Frontend Lead    | UI, Docs              |
-| fahad | Backend & QA      | Supabase, Testing     |
+| ibrahem | Project Maneger | Planning, standups    |
